@@ -1,0 +1,9 @@
+127.0.0.1, 2024-03-07 21:29:23, GET, /, HTTP/1.1, 303, 0.001060
+127.0.0.1, 2024-03-07 21:29:23, GET, /welcome/default/index, HTTP/1.1, 200, 0.069790
+127.0.0.1, 2024-03-07 21:29:23, GET, /welcome/static/images/background.jpg, HTTP/1.1, 404, 0.000222
+127.0.0.1, 2024-03-07 21:29:30, GET, /admin/default/index, HTTP/1.1, 200, 0.129233
+127.0.0.1, 2024-03-07 21:29:30, GET, /favicon.ico, HTTP/1.1, 400, 0.000217
+127.0.0.1, 2024-03-07 21:29:33, POST, /admin/default/index, HTTP/1.1, 303, 0.008861
+127.0.0.1, 2024-03-07 21:29:33, GET, /admin/default/site, HTTP/1.1, 200, 0.052928
+127.0.0.1, 2024-03-07 21:29:33, GET, /favicon.ico, HTTP/1.1, 400, 0.000138
+127.0.0.1, 2024-03-07 21:29:38, POST, /admin/default/check_version, HTTP/1.1, 200, 5.171955
