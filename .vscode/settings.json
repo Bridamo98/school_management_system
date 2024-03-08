@@ -1,0 +1,16 @@
+{
+  "[python]": {
+      "editor.rulers": [88],
+      "editor.tabSize": 4,
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+      },
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.detectIndentation": true,
+      "editor.insertSpaces": true
+    },
+  "ruff.lint.args": ["--config=ruff.toml"],
+  "ruff.format.args": ["--config=ruff.toml"]
+}

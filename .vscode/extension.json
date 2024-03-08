@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+      "charliermarsh.ruff",
+      "shardulm94.trailing-spaces",
+      "streetsidesoftware.code-spell-checker",
+      "SonarSource.sonarlint-vscode",
+      "usernamehw.errorlens",
+      "znck.grammarly",
+      "eamodio.gitlens"
+    ]
+  }

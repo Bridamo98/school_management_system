@@ -1,0 +1,8 @@
+line-length = 88
+target-version = 'py37'
+indent-width = 4
+include = [
+    "web2py/applications/welcome/models/*.py"
+]
+[format]
+line-ending = "auto"
