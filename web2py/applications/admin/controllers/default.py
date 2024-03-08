@@ -1164,7 +1164,13 @@ def design():
         include[c] = [i[1] for i in items]
 
     # Get all modules
-    modules = listdir(apath('%s/modules/' % app, r=request), r'.*\.py$')
+    path_info = request['env']['PATH_INFO']
+    modules_location = ''
+    if '/test' in path_info:
+        modules_location = '/src/'
+    else:
+        modules_location = '/modules/'
+    modules = listdir(apath('%s%s' % (app, modules_location), r=request), r'.*\.py$')
     modules = modules = [x.replace('\\', '/') for x in modules]
     modules.sort()
 

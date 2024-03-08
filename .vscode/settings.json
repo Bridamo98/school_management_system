@@ -1,16 +1,19 @@
 {
   "[python]": {
-      "editor.rulers": [88],
-      "editor.tabSize": 4,
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit",
-        "source.organizeImports": "explicit"
-      },
-      "editor.defaultFormatter": "charliermarsh.ruff",
-      "editor.detectIndentation": true,
-      "editor.insertSpaces": true
+    "editor.rulers": [88],
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "never",
+      "source.organizeImports": "never"
     },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.languageServer": "Pylance",
   "ruff.lint.args": ["--config=ruff.toml"],
   "ruff.format.args": ["--config=ruff.toml"]
 }

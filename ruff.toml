@@ -1,6 +1,6 @@
 line-length = 88
 target-version = 'py37'
-indent-width = 4
+indent-width = 2
 include = [
     "web2py/applications/welcome/models/*.py"
 ]
