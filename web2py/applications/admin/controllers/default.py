@@ -1166,7 +1166,7 @@ def design():
     # Get all modules
     path_info = request['env']['PATH_INFO']
     modules_location = ''
-    if '/test' in path_info:
+    if '/school' in path_info:
         modules_location = '/src/'
     else:
         modules_location = '/modules/'
