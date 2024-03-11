@@ -5,3 +5,5 @@ web2py/parameters_8000.py
 web2py/httpserver.log
 web2py/applications/**/sessions/
 web2py/httpserver.log
+/**/node_modules/
+web2py/applications/**/errors/*

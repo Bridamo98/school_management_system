@@ -2,7 +2,7 @@
   "[python]": {
     "editor.rulers": [88],
     "editor.tabSize": 2,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll": "never",
       "source.organizeImports": "never"
@@ -15,5 +15,9 @@
   "python.analysis.autoImportCompletions": true,
   "python.languageServer": "Pylance",
   "ruff.lint.args": ["--config=ruff.toml"],
-  "ruff.format.args": ["--config=ruff.toml"]
+  "ruff.format.args": ["--config=ruff.toml"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript"]
 }
