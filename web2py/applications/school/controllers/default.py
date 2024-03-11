@@ -5,9 +5,13 @@
 # -------------------------------------------------------------------------
 
 # ---- example index page ----
-def index():
+def index_old():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
+
+def index():
+    # response.flash = T("Hello World")
+    return dict(title=T('Welcome to the School Management System'))
 
 # ---- API (example) -----
 @auth.requires_login()

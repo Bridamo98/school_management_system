@@ -1,14 +1,25 @@
+{{import os, glob}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>School System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Make the body take the full height of the viewport */
+            margin: 0; /* Remove default margin */
+            background-color: #f4f4f4; /* Light gray background */
+        }
+
+        h1 {
+            color: #333; /* Dark gray text color */
+            padding-bottom: 100px;
         }
 
         button {
@@ -16,36 +27,25 @@
             font-size: 16px;
             margin: 10px;
             cursor: pointer;
+            background-color: #3498db; /* Blue button background color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the School Management System</h1>
-    <button onclick="registerStudent()">Register Student</button>
+    <h1>{{=title}}</h1>
+    <button>
+        {{=A(str(T('Register Student')),_href=URL('student','register'))}}
+    </button>
     <button onclick="manageSubject()">Manage Subject</button>
     <button onclick="manageClassrooms()">Manage Classrooms</button>
     <button onclick="manageAssistance()">Manage Assistance</button>
-
-    <script>
-        function registerStudent() {
-            // Add your logic for the "Register Student" button here
-            alert("Register Student button clicked");
-        }
-
-        function manageSubject() {
-            // Add your logic for the "Manage Subject" button here
-            alert("Manage Subject button clicked");
-        }
-
-        function manageClassrooms() {
-            // Add your logic for the "Manage Classrooms" button here
-            alert("Manage Classrooms button clicked");
-        }
-
-        function manageAssistance() {
-            // Add your logic for the "Manage Assistance" button here
-            alert("Manage Assistance button clicked");
-        }
-    </script>
+    <script src="{{=URL('static', 'js/static/ts/home.js')}}"></script>
 </body>
 </html>
