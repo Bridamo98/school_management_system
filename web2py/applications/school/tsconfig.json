@@ -5,6 +5,6 @@
       "outDir": "static/js",
       "rootDir": "./"
     },
-    "include": ["./src/**/*.ts", "./static/ts/"],
+    "include": ["./static/ts/"],
     "exclude": ["node_modules", "./static/js/"],
 }

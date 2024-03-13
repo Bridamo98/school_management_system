@@ -5,7 +5,7 @@ class Templates {
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Estudiantes</title>
+    <title>Register Student</title>
     <style>
         body {
             font-family: Arial, sans-serif;
