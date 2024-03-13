@@ -9,7 +9,7 @@ WEB2PY_VERSION_URL = WEB2PY_URL + '/examples/default/version'
 # browser.
 
 # if demo mode is True then admin works readonly and does not require login
-DEMO_MODE = False
+DEMO_MODE = True
 
 # if visible_apps is not empty only listed apps will be accessible
 FILTER_APPS = []
