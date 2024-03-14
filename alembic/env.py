@@ -6,7 +6,7 @@ from sqlalchemy import pool
 from alembic import context
 
 # Import your models from models.py
-from web2py.applications.api.models.models import Base
+from web2py.applications.school.models.models import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
