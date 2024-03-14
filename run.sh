@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sudo docker rmi -f $(sudo docker images -aq) # Remove all Docker images
+
 
 up() {
     sudo docker compose up -d # Start Docker containers in the background
@@ -19,7 +19,11 @@ rem_persistence() {
     sudo rm -rf postgres-data/
 }
 
-allowed_values=("up" "stop" "down" "restart" "restartp")
+rem_images() {
+    sudo docker rmi -f $(sudo docker images -aq) # Remove all Docker images
+}
+
+allowed_values=("up" "stop" "down" "restart" "restartp" "restarti" "restartpi")
 
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 [ ${allowed_values[*]} ]"
@@ -68,3 +72,15 @@ if [[ $argument = "restartp" ]]; then
     up
 fi
 
+if [[ $argument = "restarti" ]]; then
+    down
+    rem_images
+    up
+fi
+
+if [[ $argument = "restartpi" ]]; then
+    down
+    rem_images
+    rem_persistence
+    up
+fi
