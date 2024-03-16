@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 Base = declarative_base()
 
@@ -10,33 +10,33 @@ class Student(Base):
     name = Column(String)
     grade = Column(String)
     age = Column(Integer)
+    subjects = relationship("StudentxSubject", cascade="all, delete", passive_deletes=True)
 
 class Subject(Base):
     __tablename__ = 'subjects'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    classrooms = relationship("SubjectXClassroom", cascade="all, delete", passive_deletes=True)
+    students = relationship("StudentxSubject", cascade="all, delete", passive_deletes=True)
 
 class StudentxSubject(Base):
     __tablename__ = 'students_subjects'
-    studentId = Column(Integer, ForeignKey('students.id'), primary_key=True)
-    subjectId = Column(Integer, ForeignKey('subjects.id'), primary_key=True)
-    student = relationship("Student", backref="subjects")
-    subject = relationship("Subject", backref="students")
+    student_id = Column(Integer, ForeignKey('students.id', ondelete="cascade", onupdate="cascade"), primary_key=True)
+    subject_id = Column(Integer, ForeignKey('subjects.id', ondelete="cascade", onupdate="cascade"), primary_key=True)
 
 class Classroom(Base):
     __tablename__ = 'classrooms'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    subjects = relationship("SubjectXClassroom", cascade="all, delete", passive_deletes=True)
 
 class SubjectXClassroom(Base):
     __tablename__ = 'subjects_classrooms'
-    subjectId = Column(Integer, ForeignKey('subjects.id'), primary_key=True)
-    classroomId = Column(Integer, ForeignKey('classrooms.id'), primary_key=True)
-    start = Column(String)
-    end = Column(String)
-    day = Column(String)
-    subject = relationship("Subject", backref="classrooms")
-    classroom = relationship("Classroom", backref="subjects")
+    subject_id = Column(Integer, ForeignKey('subjects.id', ondelete="cascade", onupdate="cascade"), primary_key=True)
+    classroom_id = Column(Integer, ForeignKey('classrooms.id', ondelete="cascade", onupdate="cascade"), primary_key=True)
+    start_h = Column(String)
+    end_h = Column(String)
+    day_of_week = Column(String)
     __table_args__ = (
-        UniqueConstraint('classroomId', 'start', 'end', 'day'),
+        UniqueConstraint('classroom_id', 'start_h', 'end_h', 'day_of_week'),
     )

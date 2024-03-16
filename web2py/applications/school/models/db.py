@@ -153,3 +153,33 @@ if configuration.get('scheduler.enabled'):
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
+
+db.define_table('students',
+    Field('id'),
+    Field('name'),
+    Field('grade'),
+    Field('age', 'integer')
+)
+
+db.define_table('subjects',
+    Field('id'),
+    Field('name')
+)
+
+db.define_table('students_subjects',
+    Field('student_id'),
+    Field('subject_id')
+)
+
+db.define_table('classrooms',
+    Field('id'),
+    Field('name')
+)
+
+db.define_table('subjects_classrooms',
+    Field('subject_id'),
+    Field('classroom_id'),
+    Field('start_h'),
+    Field('end_h'),
+    Field('day_of_week')
+)

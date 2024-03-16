@@ -1,8 +1,8 @@
-"""Initial migration
+"""initial with on update and delete cascade
 
-Revision ID: 428d5a5ed653
+Revision ID: 2035cd9b86c5
 Revises: 
-Create Date: 2024-03-13 15:24:48.669442
+Create Date: 2024-03-16 17:56:04.323113
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '428d5a5ed653'
+revision: str = '2035cd9b86c5'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -38,22 +38,22 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('students_subjects',
-    sa.Column('studentId', sa.Integer(), nullable=False),
-    sa.Column('subjectId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['studentId'], ['students.id'], ),
-    sa.ForeignKeyConstraint(['subjectId'], ['subjects.id'], ),
-    sa.PrimaryKeyConstraint('studentId', 'subjectId')
+    sa.Column('student_id', sa.Integer(), nullable=False),
+    sa.Column('subject_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['student_id'], ['students.id'], onupdate='cascade', ondelete='cascade'),
+    sa.ForeignKeyConstraint(['subject_id'], ['subjects.id'], onupdate='cascade', ondelete='cascade'),
+    sa.PrimaryKeyConstraint('student_id', 'subject_id')
     )
     op.create_table('subjects_classrooms',
-    sa.Column('subjectId', sa.Integer(), nullable=False),
-    sa.Column('classroomId', sa.Integer(), nullable=False),
-    sa.Column('start', sa.String(), nullable=True),
-    sa.Column('end', sa.String(), nullable=True),
-    sa.Column('day', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['classroomId'], ['classrooms.id'], ),
-    sa.ForeignKeyConstraint(['subjectId'], ['subjects.id'], ),
-    sa.PrimaryKeyConstraint('subjectId', 'classroomId'),
-    sa.UniqueConstraint('classroomId', 'start', 'end', 'day')
+    sa.Column('subject_id', sa.Integer(), nullable=False),
+    sa.Column('classroom_id', sa.Integer(), nullable=False),
+    sa.Column('start_h', sa.String(), nullable=True),
+    sa.Column('end_h', sa.String(), nullable=True),
+    sa.Column('day_of_week', sa.String(), nullable=True),
+    sa.ForeignKeyConstraint(['classroom_id'], ['classrooms.id'], onupdate='cascade', ondelete='cascade'),
+    sa.ForeignKeyConstraint(['subject_id'], ['subjects.id'], onupdate='cascade', ondelete='cascade'),
+    sa.PrimaryKeyConstraint('subject_id', 'classroom_id'),
+    sa.UniqueConstraint('classroom_id', 'start_h', 'end_h', 'day_of_week')
     )
     # ### end Alembic commands ###
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-
+build() {
+    sudo docker compose build
+}
 
 up() {
     sudo docker compose up -d # Start Docker containers in the background
@@ -23,7 +25,7 @@ rem_images() {
     sudo docker rmi -f $(sudo docker images -aq) # Remove all Docker images
 }
 
-allowed_values=("up" "stop" "down" "restart" "restartp" "restarti" "restartpi")
+allowed_values=("build" "up" "bup" "stop" "down" "restart" "restartp" "restarti" "restartpi")
 
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 [ ${allowed_values[*]} ]"
@@ -49,7 +51,16 @@ else
 fi
 
 
+if [[ $argument = "build" ]]; then
+    build
+fi
+
 if [[ $argument = "up" ]]; then
+    up
+fi
+
+if [[ $argument = "bup" ]]; then
+    build
     up
 fi
 
@@ -63,18 +74,21 @@ fi
 
 if [[ $argument = "restart" ]]; then
     down
+    build
     up
 fi
 
 if [[ $argument = "restartp" ]]; then
     down
     rem_persistence
+    build
     up
 fi
 
 if [[ $argument = "restarti" ]]; then
     down
     rem_images
+    build
     up
 fi
 
@@ -82,5 +96,6 @@ if [[ $argument = "restartpi" ]]; then
     down
     rem_images
     rem_persistence
+    build
     up
 fi
