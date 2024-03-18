@@ -4,16 +4,6 @@ function registerStudent (): void {
   alert('Register Student button clicked')
 }
 
-function manageSubject (): void {
-  // Add your logic for the "Manage Subject" button here
-  alert('Manage Subject button clicked')
-}
-
-function manageClassrooms (): void {
-  // Add your logic for the "Manage Classrooms" button here
-  alert('Manage Classrooms button clicked')
-}
-
 function manageAssistance (): void {
   // Add your logic for the "Manage Assistance" button here
   alert('Manage Assistance button clicked')
@@ -21,5 +11,5 @@ function manageAssistance (): void {
 
 export {
   manageAssistance,
-  manageClassrooms, manageSubject, registerStudent
+  registerStudent
 }

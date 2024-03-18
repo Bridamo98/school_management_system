@@ -1,0 +1,75 @@
+.form {
+    align-items: center;
+    margin-top: 20px;
+}
+
+.web2py_console label {
+    margin: 10px 0;
+    color: #333;
+}
+
+.web2py_console input {
+    padding: 8px;
+    margin: 5px 0 15px 10px;
+    width: 200px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+}
+
+.web2py_console button {
+    padding: 10px 20px 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.web2py_console button:hover {
+    background-color: #2980b9;
+}
+
+
+.web2py_grid {
+    margin: 20px;
+}
+
+.form-control {
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+/* Styling for table */
+.web2py_table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.web2py_table th, .web2py_table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+
+.web2py_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.web2py_table tr:hover {
+    background-color: #ddd;
+}
+
+/* Styling for export menu */
+.w2p_export_menu {
+    margin-top: 20px;
+}
+
+.w2p_export_menu a {
+    margin-right: 10px;
+}
