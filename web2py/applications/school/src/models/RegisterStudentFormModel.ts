@@ -8,12 +8,12 @@ interface FormField {
 
 class RegisterStudentFormModel {
   nameField: FormField
-  courseField: FormField
+  gradeField: FormField
   ageField: FormField
 
-  constructor (name: FormField, course: FormField, age: FormField) {
+  constructor (name: FormField, grade: FormField, age: FormField) {
     this.nameField = name
-    this.courseField = course
+    this.gradeField = grade
     this.ageField = age
   }
 
@@ -22,7 +22,7 @@ class RegisterStudentFormModel {
   }
 
   setCourseValue(value: string) {
-    this.courseField = { ...this.courseField, value: value };
+    this.gradeField = { ...this.gradeField, value: value };
   }
 
   setAgeValue(value: string) {

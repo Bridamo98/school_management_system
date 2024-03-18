@@ -18,18 +18,18 @@ class RegisterStudentFormController {
 
   static handleFormSubmit(form: RegisterStudentFormModel) {
     const nameInput = document.getElementById(form.nameField.id) as HTMLInputElement;
-    const courseInput = document.getElementById(form.courseField.id) as HTMLInputElement;
+    const gradeInput = document.getElementById(form.gradeField.id) as HTMLInputElement;
     const ageInput = document.getElementById(form.ageField.id) as HTMLInputElement;
-    if (!nameInput.value || !courseInput.value || !ageInput.value) {
-      alert('Todos los campos son obligatorios. Por favor, complete todos los campos.');
+    if (!nameInput.value || !gradeInput.value || !ageInput.value) {
+      alert('All fields are required');
       return;
     }
 
     form.setNameValue(nameInput.value);
-    form.setCourseValue(courseInput.value);
+    form.setCourseValue(gradeInput.value);
     form.setAgeValue(ageInput.value);
 
-    alert('Formulario valido');
+    alert('Valid form');
   }
 }
 
