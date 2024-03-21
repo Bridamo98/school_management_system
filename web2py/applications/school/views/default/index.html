@@ -18,6 +18,9 @@
     <button>
         {{=A(str(T('Manage Classrooms')),_href=URL('classrooms','index'),_style="color: white;")}}
     </button>
+    <button>
+        {{=A(str(T('Manage Schedule')),_href=URL('schedules','index'),_style="color: white;")}}
+    </button>
     <button onclick="manageAssistance()">Manage Assistance</button>
     <script src="{{=URL('static', 'js/static/ts/home.js')}}"></script>
 </body>

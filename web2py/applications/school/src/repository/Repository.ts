@@ -24,13 +24,12 @@ class Repository {
     return axios
       .post(apiUrl, requestData)
       .then((response) => {
-        alert("Student registered");
-        // console.log('Registration successful:', response.data);
+        alert('STUDENT REGISTERED!.\n\n' + response.data.message);
         formElement.reset();
         return response.data;
       })
       .catch((error) => {
-        alert("Student registration was not possible");
+        alert(error.data);
         // console.error('Registration failed:', error);
         throw error;
       });
