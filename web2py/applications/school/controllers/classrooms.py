@@ -3,7 +3,8 @@ def index():
     db.classrooms,
     deletable=True,
     editable=True,
-    create=False,
+    create=True,
     paginate=10,
+    user_signature=False
   )
   return dict(grid=grid)

@@ -7,5 +7,5 @@ def register_student():
   name = request.vars.name
   grade = request.vars.grade
   age = request.vars.age
-  StudentServices.register_student(name, grade, age)
-  return response.json({"ok": "Registered student"})
+  data = StudentServices.register_student(name, grade, age)
+  return response.json({"message": data})

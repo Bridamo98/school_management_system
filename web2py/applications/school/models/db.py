@@ -155,31 +155,38 @@ if configuration.get('scheduler.enabled'):
 # auth.enable_record_versioning(db)
 
 db.define_table('students',
-    Field('id'),
     Field('name'),
     Field('grade'),
-    Field('age', 'integer')
+    Field('age'),
+    migrate=False
 )
 
 db.define_table('subjects',
-    Field('id'),
-    Field('name')
+    Field('name'),
+    Field('grade'),
+    migrate=False
 )
 
-db.define_table('students_subjects',
+db.define_table('assistances',
     Field('student_id'),
-    Field('subject_id')
+    Field('subject_id'),
+    Field('classroom_id'),
+    Field('week_number'),
+    Field('day_of_week'),
+    Field('assists'),
+    migrate=False
 )
 
 db.define_table('classrooms',
-    Field('id'),
-    Field('name')
+    Field('name'),
+    migrate=False
 )
 
-db.define_table('subjects_classrooms',
+db.define_table('schedules',
     Field('subject_id'),
     Field('classroom_id'),
     Field('start_h'),
     Field('end_h'),
-    Field('day_of_week')
+    Field('day_of_week'),
+    migrate=False
 )

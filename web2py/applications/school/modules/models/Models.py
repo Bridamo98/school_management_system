@@ -1,19 +1,17 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
+from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, Boolean
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
 
-class Student(Base):
+class Student(Base):  # ok
   __tablename__ = "students"
   id = Column(Integer, primary_key=True)
   name = Column(String, nullable=False)
   grade = Column(String, nullable=False)
   age = Column(Integer, nullable=False)
-  subjects = relationship(
-    "StudentxSubject", cascade="all, delete", passive_deletes=True
-  )
+  assistances = relationship("Assistance", cascade="all, delete", passive_deletes=True)
 
   def __init__(self, name, grade, age):
     self.name = name
@@ -21,62 +19,75 @@ class Student(Base):
     self.age = age
 
 
-class Subject(Base):
+class Subject(Base):  # ok
   __tablename__ = "subjects"
   id = Column(Integer, primary_key=True)
   name = Column(String, nullable=False)
-  classrooms = relationship(
-    "SubjectXClassroom", cascade="all, delete", passive_deletes=True
-  )
-  students = relationship(
-    "StudentxSubject", cascade="all, delete", passive_deletes=True
-  )
+  grade = Column(String, nullable=False)
+  schedules = relationship("Schedule", cascade="all, delete", passive_deletes=True)
+  assistances = relationship("Assistance", cascade="all, delete", passive_deletes=True)
 
-  def __init__(self, name):
+  def __init__(self, name, grade):
     self.name = name
+    self.grade = grade
 
 
-class StudentxSubject(Base):
-  __tablename__ = "students_subjects"
+class Assistance(Base):  # ok
+  __tablename__ = "assistances"
+  id = Column(Integer, primary_key=True)
   student_id = Column(
     Integer,
     ForeignKey("students.id", ondelete="cascade", onupdate="cascade"),
-    primary_key=True,
   )
   subject_id = Column(
     Integer,
     ForeignKey("subjects.id", ondelete="cascade", onupdate="cascade"),
-    primary_key=True,
-  )
-
-  def __init__(self, student_id, subject_id):
-    self.student_id = student_id
-    self.subject_id = subject_id
-
-
-class Classroom(Base):
-  __tablename__ = "classrooms"
-  id = Column(Integer, primary_key=True)
-  name = Column(String, nullable=False)
-  subjects = relationship(
-    "SubjectXClassroom", cascade="all, delete", passive_deletes=True
-  )
-
-  def __init__(self, name):
-    self.name = name
-
-
-class SubjectXClassroom(Base):
-  __tablename__ = "subjects_classrooms"
-  subject_id = Column(
-    Integer,
-    ForeignKey("subjects.id", ondelete="cascade", onupdate="cascade"),
-    primary_key=True,
   )
   classroom_id = Column(
     Integer,
     ForeignKey("classrooms.id", ondelete="cascade", onupdate="cascade"),
-    primary_key=True,
+  )
+  week_number = Column(Integer, nullable=False)
+  day_of_week = Column(String, nullable=False)
+  assists = Column(Boolean, nullable=False)
+  __table_args__ = (
+    UniqueConstraint(
+      "student_id", "subject_id", "classroom_id", "week_number", "day_of_week"
+    ),
+  )
+
+  def __init__(
+    self, student_id, subject_id, classroom_id, week_number, day_of_week, assists
+  ):
+    self.student_id = student_id
+    self.subject_id = subject_id
+    self.classroom_id = classroom_id
+    self.week_number = week_number
+    self.day_of_week = day_of_week
+    self.assists = assists
+
+
+class Classroom(Base):  # ok
+  __tablename__ = "classrooms"
+  id = Column(Integer, primary_key=True)
+  name = Column(String, nullable=False)
+  subjects = relationship("Schedule", cascade="all, delete", passive_deletes=True)
+  assistances = relationship("Assistance", cascade="all, delete", passive_deletes=True)
+
+  def __init__(self, name):
+    self.name = name
+
+
+class Schedule(Base):
+  __tablename__ = "schedules"
+  id = Column(Integer, primary_key=True)
+  subject_id = Column(
+    Integer,
+    ForeignKey("subjects.id", ondelete="cascade", onupdate="cascade"),
+  )
+  classroom_id = Column(
+    Integer,
+    ForeignKey("classrooms.id", ondelete="cascade", onupdate="cascade"),
   )
   start_h = Column(String)
   end_h = Column(String)
